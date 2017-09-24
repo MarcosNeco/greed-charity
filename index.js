@@ -9,8 +9,8 @@ var app = express();
 
 // Cria Cliente Redis
 // Porta e hostname são retirados de configuration -> endpoint do redislabs.com
-var clienteRedis = redis.createClient(6379, 
-	'127.0.0.1', 
+var clienteRedis = redis.createClient(13024, 
+	'redis-13024.c14.us-east-1-3.ec2.cloud.redislabs.com', 
 	{no_ready_check: true});
 
 clienteRedis.auth('password', function(err){

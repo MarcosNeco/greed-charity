@@ -1,0 +1,26 @@
+{
+  "name": "greed-charity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcosNeco/greed-charity.git"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "ejs": "2.5.7",
+    "morgan": "*",
+    "redis": "*"
+  },
+  "author": "Marcos Neco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcosNeco/greed-charity/issues"
+  },
+  "homepage": "https://github.com/MarcosNeco/greed-charity#readme"
+}

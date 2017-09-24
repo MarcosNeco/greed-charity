@@ -1,0 +1,114 @@
+<html>
+    
+    <head>
+        <title>Greed Charity</title>
+        <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css">
+        <style>
+            .remover:checked+span {
+                color: red;
+            }
+            .lista-tarefas {
+                list-style: none;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse" style="background-color: gray">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                     data-target="#navbar" aria-expanded="false"  aria-c newontrols="navbar">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                    <a class="navbar-brand" href="#">Greed Charity</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+    
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+    
+        <div class="container">
+            <form method="post" action="/charity/adicionar">
+                <label>Adicionar Doação</label>
+                <fieldset>
+                    <label>Codigo da doação</label>
+                    <input type="number" name="charity[codigo]" pattern="^\d+(\.|\,)\d{2}$" placeholder="Código doação">
+                    <label>Valor</label>
+                    <input type="number" name="charity[value]" pattern="^\d+(\.|\,)\d{2}$" placeholder="Valor doação">
+                    <label>Instituição de caridade<label>
+                    <select name="charity[name]">
+                        <option value="Instituto Mendigos do sul">Instituto Mendigos do sul</option>
+                        <option value="Instituto Mendigos do norte">Instituto Mendigos do norte </option>
+                        <option value="Instituto Mendigos do leste">Instituto Mendigos do leste</option>
+                        <option value="Pequeno centro de crianças"/>Pequeno centro de crianças</option>
+                        <option value="Lar de esperança"/>Lar de esperança</option>
+                    </select>
+                    
+                </fieldset>
+                <input type="submit" value="Adicionar">
+            </form>
+
+            <br/>
+            <br/>
+            
+            <br/>
+            <br/>
+            <div>
+                <% if(charitys != null){ %>
+                <label>Doações realizadas</label>
+                <form method="post" action="/charity/remover">
+                     <table style="width: 100%; border: 1px solid black;">
+                            <tr style="border: 1px solid black;">
+                                <th></th>
+                                <th>Codigo</th>
+                                <th>Instituição</th>
+                                <th>Valor</th>
+                            </tr>
+                            <% charitys.forEach(function(charity){ %>
+                                <tr>
+                                    <td><input type="checkbox" name="codigo" class="remover" value="<%= charity['codigo'] %>"></td>
+                                    <td><span><%= charity['codigo'] %></span></td>
+                                    <td><span><%= charity['name'] %></span></td>
+                                    <td><span><%= charity['value'] %></span></td>
+                                </tr>    
+                            <% }) %>
+                    </table>
+                    <br/>
+                    <input type="submit" value="Remover">
+                </form>
+                <% } %>
+            </div>
+            
+            <div class="well">
+                 <h3>Editar Doação</h3>
+                 <form method="post" action="/charity/editar">
+                        <label>Codigo</label><br>
+                        <input type="number" name="charity[codigo]" placeholder="Código">
+                        <br><br>
+                        <label>Instituição de caridade</label><br>
+                        <select name="charity[name]">
+                                <option value="Instituto Mendigos do sul">Instituto Mendigos do sul</option>
+                                <option value="Instituto Mendigos do norte">Instituto Mendigos do norte </option>
+                                <option value="Instituto Mendigos do leste">Instituto Mendigos do leste</option>
+                                <option value="Pequeno centro de crianças"/>Pequeno centro de crianças</option>
+                                <option value="Lar de esperança"/>Lar de esperança</option>
+                        </select>
+                        <br><br>
+                        <label>Valor</label><br>
+                        <input type="number" name="charity[value]" placeholder="Valor">
+                        <br><br>
+                        <input type="submit" value="Editar">
+                  </form>
+            </div>
+        </div>
+    </body>
+    
+    </html>
